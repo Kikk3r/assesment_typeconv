@@ -5,14 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-
 package assesment_typeconv;
 
 public class Convertor {
 	public static Cracked crack(int value) {
-		return new Cracked((short)0, (short)0);		
+		short hi = (short) (value >>> 16);
+		short low = (short) value;
+		return new Cracked(hi, low);
 	}
+
 	public static int uncrack(Cracked cracked ) {
-		return 0;
+		return ((int) cracked.hi << 16) + ((int) cracked.low & 0x0000FFFF);
 	}
 }

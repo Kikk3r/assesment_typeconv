@@ -8,14 +8,18 @@
 package assesment_typeconv;
 
 import org.junit.Test;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
 
 public class ConvertorTest {
-	
+
 	@Test
 	public void crackUncrack() {
-		System.out.println(Convertor.crack(0));
-		System.out.println(Convertor.uncrack(Convertor.crack(0)));
-		fail("Not implemented yet");
+		int initialInt = Integer.MIN_VALUE;
+		do {
+			Cracked cracked = Convertor.crack(initialInt);
+			int uncrackedInt = Convertor.uncrack(cracked);
+			assertEquals(initialInt, uncrackedInt);
+			initialInt++;
+		} while (initialInt != Integer.MIN_VALUE);
 	}
 }
